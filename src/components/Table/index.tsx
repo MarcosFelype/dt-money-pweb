@@ -24,11 +24,18 @@ export function Table({data}: ITableProps) {
                     <td className="px-4 py-4 whitespace-nowrap text-title">{transaction.title}</td>
                     <td className={`px-4 py-4 whitespace-nowrap text-right ${transaction.type === 'INCOME'? "text-income" : "text-outcome"}`}>{formatCurrency(transaction.price)}</td>
                     <td className="px-4 py-4 whitespace-nowrap text-table">{transaction.category}</td>
-                    <td className="px-4 py-4 whitespace-nowrap text-table">{transaction.data ? formatDate(new Date(transaction.data)) : ''}</td>                             
+                    <td className="px-4 py-4 whitespace-nowrap text-table">{transaction.data ? formatDate(new Date(transaction.data)) : ''}
+                    </td>
+                    <td><button onClick={() => alert('Olá')}>EDIT</button></td>
+                    <td><button onClick={() => deleteTransaction(transaction.id)}>DELETE</button></td>                             
                 </tr>
             ))}
         </tbody>
     </table>    
     </> 
     )
+}
+
+function deleteTransaction(id: string | undefined) {
+    alert(`Deleting transaction with id: ${id}`);
 }

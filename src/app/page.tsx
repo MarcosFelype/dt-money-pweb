@@ -13,6 +13,7 @@ export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { data: transactions , isLoading } = useTransaction.ListAll();
   const { mutateAsync: addTransaction } = useTransaction.Create();
+  const { mutateAsync: deleteTransaction } = useTransaction.Delete();
   const openModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
 

@@ -19,3 +19,14 @@ export async function createTransaction(transaction: ITransaction) {
         throw new Error("Erro ao criar transação: " + error);
     }
 }
+
+export async function deleteTransaction(id: string) {
+    try{
+        const response = await api.delete(`/transaction/${id}`);
+        toast.success("Transação removida com sucesso!");
+        return response.status === 204;
+    }
+    catch (error){
+        throw new Error("Erro ao remover transação: " + error);
+    }
+}
