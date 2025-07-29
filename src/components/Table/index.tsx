@@ -2,10 +2,11 @@ import { ITransaction } from "@/types/transaction";
 import { formatCurrency, formatDate } from "@/utils";
 
 export interface ITableProps {
-    data: ITransaction[]
+    data: ITransaction[],
+    openDeletModal: () => void;
 }
 
-export function Table({data}: ITableProps) {   
+export function Table({data, openDeletModal}: ITableProps) {   
 
     return (  
         <>     
@@ -26,16 +27,14 @@ export function Table({data}: ITableProps) {
                     <td className="px-4 py-4 whitespace-nowrap text-table">{transaction.category}</td>
                     <td className="px-4 py-4 whitespace-nowrap text-table">{transaction.data ? formatDate(new Date(transaction.data)) : ''}
                     </td>
-                    <td><button onClick={() => alert('Olá')}>EDIT</button></td>
-                    <td><button onClick={() => deleteTransaction(transaction.id)}>DELETE</button></td>                             
+                    <td><button onClick={() => alert('Olá')}>ATUALIZAR</button></td>
+                    <td>
+                        <button onClick={() => openDeletModal}  className="bg-button text-white px-8 py-3 rounded-md hover:opacity-80"> REMOVER </button> 
+                    </td>                             
                 </tr>
             ))}
         </tbody>
     </table>    
     </> 
     )
-}
-
-function deleteTransaction(id: string | undefined) {
-    alert(`Deleting transaction with id: ${id}`);
 }
